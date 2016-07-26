@@ -37,5 +37,6 @@ defmodule Peepchat.Endpoint do
     signing_salt: "KYIYr6bN"
 
   plug CORSPlug
+
   plug Peepchat.Router
 end
