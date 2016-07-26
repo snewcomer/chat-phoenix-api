@@ -1,10 +1,17 @@
 language: elixir
 elixir:
-  - 1.2
+- 1.2
 otp_release:
-  - 18.2
+- 18.2
 sudo: false
 addons:
   postgresql: '9.4'
 before_script:
 - psql -c 'create database peepchat_test;' -U postgres
+deploy:
+  provider: heroku
+  api_key:
+    secure: JOcYUYuWyH8rw1CCReciJsWHztBd2JMgNbVhWSC8KX4hy4h7JzClKXDdX7TsCgdUhtrsDpKTXoXab6tiWXISJvFfWNbNUrdH1IASvA3PmCrCgXPuII3i6BSUPB9d6WkfEcdhQ7RT+/VlyvMCD0qyg43O0zGHrtZtJuuqa+yf1yls4/HfNiTISbf70fErWgHA2qird0Ygm0/i0/dH9eTBFpoQskNjpLyd04ruZk4jQVrHWh8kBBcQ6/v8bqtgdY42U893eH6iiX29OHNi8gxJCw0sZL6eDNHkxaT1Gk4OpQ6PHhiB4+T7BvzkiZuYynhOV8VJt6r8H6iQEAjFABIjrZcGbk7TTmnZSq+V/pW4NCO6DjMpWG2BN1314AD/R9k5Tu1VZrRaOauV1yXMjBmALOA1grL5i3S3J+nhOlgMRhbJnEoNJnrEEUol7CRK7OXV8vQ2ht6RnjpSVz9/jEi5MsmVyh/NlrxfT+vzPzBgvWQfbMxQWDYPHiAlApPNvxDdi2sj+kptrRD51V43wWoKTtA5Ewh0Cc9BtgCLC1MjSxBvlx/mgsXn/refo1eXwD1OQe1CEeBNyzagY1mgLZNbaOdQB+K42k8jmKr2wLb+hGd27O9xcp1sRV0tqDFPeDkzzfubQ20qvGrabtSD/oAOG4Q/yi1qdha+PCQvw8/kZpU=
+  app: boiling-springs-53376
+  on:
+    repo: snewcomer/chat-phoenix-api
