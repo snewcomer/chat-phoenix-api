@@ -3,7 +3,7 @@ defmodule Peepchat.RegistrationController do
 
   alias Peepchat.User
 
-  def create(conn, %{"data" => %{"type" => "user",
+  def create(conn, %{"data" => %{"type" => "users",
       "attributes" => %{"email" => email,
         "password" => password,
         "password-confirmation" => password_confirmation}}}) do

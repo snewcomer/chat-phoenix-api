@@ -1,9 +1,9 @@
 defmodule Peepchat.UserController do
   use Peepchat.Web, :controller
 
-  alias Peepchat.User
+  # alias Peepchat.User
 
-  # pleug ensure only authenticated users able to invoke create method
+  # plug ensure only authenticated users able to invoke create method
   plug Guardian.Plug.EnsureAuthenticated, handler: Peepchat.AuthErrorHandler
 
   def current(conn, _) do

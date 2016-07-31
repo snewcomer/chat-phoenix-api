@@ -17,13 +17,20 @@ config :peepchat, Peepchat.Endpoint,
   pubsub: [name: Peepchat.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
+config :phoenix, :format_encoders,
+  "json-api": Poison
+
+config :plug, :mimes, %{
+  "application/vnd.api+json" => ["json-api"]
+}
+
 config :guardian, Guardian,
   allowed_algos: ["HS512"], # optional
   verify_module: Guardian.JWT,  # optional
   issuer: "Peepchat",
   ttl: { 30, :days },
   verify_issuer: true, # optional
-  secret_key: "D/5TlFfEJrkJmteuYTjcI7k3hSYjqBEDEYGxI0ox0+NPSp3tXP5gtKnirajYJTJZ",
+  secret_key: System.get_env("GUARDIAN_SECRET") || "D/5TlFfEJrkJmteuYTjcI7k3hSYjqBEDEYGxI0ox0+NPSp3tXP5gtKnirajYJTJZ",
   serializer: Peepchat.GuardianSerializer
 
 # Configures Elixir's Logger
@@ -33,10 +40,4 @@ config :logger, :console,
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
-config :phoenix, :format_encoders,
-  "json-api": Poison
-
-config :plug, :mimes, %{
-  "application/vnd.api+json" => ["json-api"]
-}
 import_config "#{Mix.env}.exs"
