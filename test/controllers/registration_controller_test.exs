@@ -30,5 +30,4 @@ defmodule Peepchat.RegistrationControllerTest do
       }}
     end
   end
-
 end
